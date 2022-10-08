@@ -5,11 +5,14 @@ using UnityEngine;
 public class BlueEnemy : MonoBehaviour
 {
     public GameObject blueAttack;
-    public GameObject blueTarget;
+    [SerializeField] private GameObject blueTarget;
     private Vector3 spawn;
+    private ObjectPool objectPool;
+
 
     void Start()
     {
+        objectPool = FindObjectOfType<ObjectPool>();
         StartCoroutine(CreateBlueAttack());
     }
 
@@ -18,7 +21,8 @@ public class BlueEnemy : MonoBehaviour
         while(true)
         {
             spawn = blueTarget.transform.position; 
-            GameObject blueBullet = Instantiate(blueAttack, spawn, Quaternion.identity);
+            GameObject blueBullet = objectPool.GetObject(blueAttack);
+            blueBullet.transform.position = spawn;
             yield return new WaitForSeconds(3);
         }
     }

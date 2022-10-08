@@ -15,7 +15,7 @@ public class RangedWeapon : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            Target target = hit.transform.GetComponent<Target>();
+            EnemyManager target = hit.transform.GetComponent<EnemyManager>();
             if(target != null)
             {
                 target.TakeDamage(damage);

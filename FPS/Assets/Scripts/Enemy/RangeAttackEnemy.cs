@@ -39,7 +39,6 @@ public class RangeAttackEnemy : MonoBehaviour
             healthSystem.TakeDamage(damageHealth);
             PowerSystem powerSystem = target.transform.GetComponent<PowerSystem>();
             powerSystem.MinusPower(damagePower);
-            //Destroy(gameObject);
             gameObject.SetActive(false);
         }
     }
