@@ -1,18 +1,23 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - BlueEnemy
-    - FixedJoystick
+    - ClosestEnemy
+    - EnemyManager
     - FloatingJoystick
+    - GameController
     - HealthSystem
     - IHealthBar
     - IPowerBar
+    - ObjectPool
     - PlayerLook
     - PlayerMovement
     - PowerSystem
     - RangeAttackEnemy
     - RangedWeapon
-    - Target
+    - ReturnToPool
+    - SpawnBlueBullet
+    - SpawnEnemy
+    - Teleport
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
@@ -31,6 +36,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   serializedClasses:
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputSettings/iOSSettings
@@ -43,14 +49,48 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.AnimationTriggers
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.FontData
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: GameController
+    methodName: RestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: GameController
+    methodName: StartGame
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: Assembly-CSharp
     fullTypeName: RangedWeapon
     methodName: Shoot
+  - assembly: Assembly-CSharp
+    fullTypeName: GameController
+    methodName: StopGame
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: Assembly-CSharp
+    fullTypeName: GameController
+    methodName: RestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: PowerSystem
+    methodName: UseUlty
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -92,8 +132,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1770}
     - Class: 114
-      Script: {instanceID: 2146}
-    - Class: 114
       Script: {instanceID: 2750}
     - Class: 114
       Script: {instanceID: 2984}
@@ -106,7 +144,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3664}
     - Class: 114
-      Script: {instanceID: 4294}
+      Script: {instanceID: 3696}
+    - Class: 114
+      Script: {instanceID: 4296}
     - Class: 114
       Script: {instanceID: 5292}
     - Class: 114
@@ -114,18 +154,34 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5958}
     - Class: 114
-      Script: {instanceID: 6328}
+      Script: {instanceID: 5966}
     - Class: 114
-      Script: {instanceID: 6882}
+      Script: {instanceID: 6066}
     - Class: 114
-      Script: {instanceID: 7288}
+      Script: {instanceID: 6330}
     - Class: 114
-      Script: {instanceID: 7752}
+      Script: {instanceID: 6346}
     - Class: 114
-      Script: {instanceID: 8104}
+      Script: {instanceID: 6884}
+    - Class: 114
+      Script: {instanceID: 7292}
+    - Class: 114
+      Script: {instanceID: 7756}
+    - Class: 114
+      Script: {instanceID: 8108}
+    - Class: 114
+      Script: {instanceID: 8682}
+    - Class: 114
+      Script: {instanceID: 25742}
+    - Class: 114
+      Script: {instanceID: 34044}
     - Class: 115
       Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
     - Class: 136
+      Script: {instanceID: 0}
+    - Class: 143
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -154,7 +210,7 @@ ScriptsOnlyBuild:
     className: PanelRaycaster
   - hash:
       serializedVersion: 2
-      Hash: edcd88ac0764b928253d4f55c4fc25bf
+      Hash: d7ed63442fe00d23b279dec044eff979
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RangeAttackEnemy
@@ -436,7 +492,7 @@ ScriptsOnlyBuild:
     className: UnityOnScrollMessageListener
   - hash:
       serializedVersion: 2
-      Hash: daa0589ba6305192e1e99d77b836f1bb
+      Hash: e33713e4b2a2d6aff7a4a58f5438eb98
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PowerSystem
@@ -475,13 +531,19 @@ ScriptsOnlyBuild:
       Hash: 6d696a48ea62e39adef4d26d324900da
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BlueEnemy
+    className: SpawnBlueBullet
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayerQuitHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 41217ac3b6e08e8b2b5ef794a6e49559
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Teleport
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -556,10 +618,10 @@ ScriptsOnlyBuild:
     className: InputDebuggerWindow
   - hash:
       serializedVersion: 2
-      Hash: 7be69649d8aca3c2f92bfca70dcb64ec
+      Hash: 911de9a4b213b9a3956a035e41257d0a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Target
+    className: EnemyManager
   - hash:
       serializedVersion: 2
       Hash: 1b1db168450ba28584789c506c194e9c
@@ -680,12 +742,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Player
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -826,7 +882,7 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 5ba770fda87a6b1a5e837eb3f96030f4
+      Hash: 2f3bb3503617ae8fdd6099ec85c5e47c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -836,6 +892,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ReturnToPool
   - hash:
       serializedVersion: 2
       Hash: d85b490177c3124d2335460060a2b807
@@ -863,6 +925,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ObjectPool
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: AnimatorMessageListener
@@ -878,12 +946,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
-  - hash:
-      serializedVersion: 2
-      Hash: 2a2d7b828da8a3c9b45cde8b8c2e6fa1
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: StateManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1168,6 +1230,12 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: c608f9272c04e058bca0de6593395c87
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnEnemy
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1202,6 +1270,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 01874cdc0d7ace80b31fa67eaa004de1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameController
+  - hash:
+      serializedVersion: 2
+      Hash: 422a8dfd142e7849db0694d7edfd740d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClosestEnemy
+  - hash:
+      serializedVersion: 2
+      Hash: 8d46a5bdb92b0159afff2d1c3b6229c5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnBullet
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6620847585540538482}
   - component: {fileID: 8377347725873240839}
   - component: {fileID: 548887419043650711}
+  - component: {fileID: -702650303719588730}
   m_Layer: 0
   m_Name: RedTarget
   m_TagString: Enemy
@@ -114,10 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23fe3b33dfcbc914286510b8f4ef8472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: []
+  plusPower: 15
+  plusHealth: 20
+  target: {fileID: 0}
   health: 50
   _power: 50
-  plusPower: 15
-  target: {fileID: 0}
 --- !u!114 &6620847585540538482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 5
-  damageHealth: 0
+  damageHealth: 15
   damagePower: 0
+  moveSpeed: 5
 --- !u!54 &8377347725873240839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,3 +165,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be376c2b554a84429823f37d9d408af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-702650303719588730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238396149108557890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2473643759e611746866b33f95edb58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needEnemy: {fileID: 0}

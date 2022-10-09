@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PowerSystem : MonoBehaviour
 {
-    [SerializeField] public int power;
-    private GameObject[] enemy;
-
+    public int power;
     public IPowerBar powerBar;
     public EnemyManager target;
+    private GameObject[] enemy;
 
     private void Awake()
     {
@@ -40,7 +39,7 @@ public class PowerSystem : MonoBehaviour
     {
         if(power >= 100)
         {
-            enemy = GameObject.FindGameObjectsWithTag("Enemy");//був плеер
+            enemy = GameObject.FindGameObjectsWithTag("Enemy");
             target = FindObjectOfType<EnemyManager>();
             power = 0;
             target.AllKill();

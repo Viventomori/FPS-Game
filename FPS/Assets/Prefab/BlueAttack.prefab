@@ -50,7 +50,7 @@ MonoBehaviour:
   target: {fileID: 0}
   moveSpeed: 25
   damageHealth: 0
-  damagePower: 0
+  damagePower: 25
 --- !u!54 &2730176207484266876
 Rigidbody:
   m_ObjectHideFlags: 0

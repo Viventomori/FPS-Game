@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour
 {
     public Transform playerBody;
     private float xRotation = 0f;
-    public float Sensitivity = 2f;
+    [SerializeField] private float Sensitivity = 2f;
     [SerializeField] private Joystick rightJoystick;
 
     private void FixedUpdate()

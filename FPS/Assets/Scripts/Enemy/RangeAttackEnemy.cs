@@ -5,22 +5,20 @@ using UnityEngine;
 public class RangeAttackEnemy : MonoBehaviour
 {
     public Transform target;
-    [SerializeField] private float moveSpeed;
-    private float attackRadius = 2;
     public int damageHealth;
     public int damagePower;
+    [SerializeField] private float moveSpeed;
+    private float attackRadius = 2;
     private Rigidbody myRigidbody;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
         target = GameObject.FindWithTag("Player").transform;
-        //transform.position = new Vector3(0, 8, 0);
     }
 
     private void FixedUpdate()
     {
-        //делей сделать
         MoveTarget();
         AttackCo();
     }
@@ -42,5 +40,4 @@ public class RangeAttackEnemy : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
 }

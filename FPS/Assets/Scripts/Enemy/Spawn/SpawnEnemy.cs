@@ -9,8 +9,9 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float timeToSpawn;
     [SerializeField] private float timeDelay;
     [SerializeField] private float minTimeDelay;
+    [SerializeField] private GameObject prefab;
+
     private ObjectPool objectPool;
-    [SerializeField] GameObject prefab;
 
     private void Start()
     {

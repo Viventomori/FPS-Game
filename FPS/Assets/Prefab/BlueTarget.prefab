@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8315513335351883397}
   - component: {fileID: 8315513335351883398}
   - component: {fileID: 2331842111900671728}
+  - component: {fileID: -4592896970889720500}
   m_Layer: 0
   m_Name: BlueTarget
   m_TagString: Enemy
@@ -113,10 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23fe3b33dfcbc914286510b8f4ef8472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: []
+  plusPower: 50
+  plusHealth: 30
+  target: {fileID: 0}
   health: 100
   _power: 100
-  plusPower: 50
-  target: {fileID: 0}
 --- !u!114 &8315513335351883398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +146,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be376c2b554a84429823f37d9d408af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4592896970889720500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315513335351883392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2473643759e611746866b33f95edb58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needEnemy: {fileID: 0}

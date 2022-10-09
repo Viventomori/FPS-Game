@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] public float health;
-    [SerializeField] private int _power;
+    [HideInInspector] 
+    public GameObject[] enemy;
     public int plusPower;
+    public int plusHealth;
     public Transform target;
-    [HideInInspector]public GameObject[] enemy; 
-    
-    public void Start()
+    [SerializeField] private float health;
+    [SerializeField] private int _power;
+
+    private void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
     }
@@ -23,11 +25,14 @@ public class EnemyManager : MonoBehaviour
             Die();
             PowerSystem powerSystem = target.transform.GetComponent<PowerSystem>();
             powerSystem.AddPower(plusPower);
+            HealthSystem healthSystem = target.transform.GetComponent<HealthSystem>();
+            healthSystem.AddHealth(plusHealth);
         }
 
         void Die()
         {
             gameObject.SetActive(false);
+            GameController.instance.EnemyKilled();
         }
     }
 
@@ -37,6 +42,7 @@ public class EnemyManager : MonoBehaviour
         foreach(GameObject go in enemy)
         {
             go.SetActive(false);
+            GameController.instance.EnemyKilled();
         }
     }
 }

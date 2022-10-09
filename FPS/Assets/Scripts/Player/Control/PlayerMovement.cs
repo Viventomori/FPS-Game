@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Joystick leftJoystick;
     public CharacterController controller;
 
-    public float speed = 12f;
-
-    private void Start()
-    {
-
-    }
+    [SerializeField] private float speed = 12f;
+    [SerializeField] private Joystick leftJoystick;
 
     private void Update()
     {
